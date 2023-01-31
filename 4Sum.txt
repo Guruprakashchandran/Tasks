@@ -1,0 +1,46 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        
+        		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		Set<List<Integer>> result1 = new HashSet<List<Integer>>();
+        Set<List<Integer>> result2 = new HashSet<List<Integer>>();
+		for(int i = 0;i<nums.length;++i){
+
+			for(int j = i+1;j<nums.length;++j){
+
+				List<Integer> list = new ArrayList<Integer>();
+				list.add(nums[i]+nums[j]);
+				list.add(i);
+				list.add(j);
+				result.add(list);
+			}
+		}
+		for(int i = 0;i<result.size();++i){
+
+			for(int j = i+1;j<result.size();++j){
+
+				if(result.get(i).get(0)+result.get(j).get(0) == target && result.get(i).get(1)!=result.get(j).get(1) &&result.get(i).get(2)!=result.get(j).get(2) && result.get(i).get(2) != result.get(j).get(1)){
+
+					List<Integer> list = new ArrayList<Integer>();
+					list.add(nums[result.get(i).get(1)]);
+					list.add(nums[result.get(j).get(1)]);
+					list.add(nums[result.get(i).get(2)]);
+					list.add(nums[result.get(j).get(2)]);
+					Collections.sort(list);
+					result1.add(list);
+				}
+			}	
+		}
+        for(List<Integer> t : result1) {
+			
+			Collections.sort(t);
+			result2.add(t);
+		}
+        result.clear();
+		for(List<Integer> t: result2) {
+			
+			result.add(t);
+		}
+        return result;
+    }
+}

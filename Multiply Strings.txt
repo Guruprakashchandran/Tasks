@@ -1,0 +1,36 @@
+class Solution {
+    public long stringToNumber(String num1){
+
+        long number = 0;
+        int i = 0;
+        while(i<num1.length()){
+
+            number = (number*10)+(num1.charAt(i)-48);
+            i++;
+        }
+        return number;
+    }
+    public String integerToString(long num){
+        String s = "",s1 = "";
+        if(num == 0){
+            return "0";
+        }
+        while(num !=0){
+
+            s += num%10;
+            System.out.println(s);
+            num/=10;
+        }
+        for(int i = s.length()-1;i>=0;--i){
+            s1 += s.charAt(i); 
+        }
+        return s1;
+    }
+    public String multiply(String num1, String num2) {
+     long number1 = 0,number2 = 0;   
+    number1 = stringToNumber(num1);
+    number2 = stringToNumber(num2);
+    System.out.println(number1+" "+number2);
+    return integerToString(number1*number2);
+    }
+}

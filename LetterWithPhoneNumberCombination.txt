@@ -1,0 +1,29 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        String table[] = {"0","1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        int length = digits.length();
+        List<String> list = new ArrayList<>();
+        Queue<String> queue = new LinkedList<String>();
+        // String s = "";
+        if(digits.length()!= 0){
+
+        queue.add("");
+        while(!queue.isEmpty()){
+
+            String s = queue.remove();
+            if(s.length() == length){
+
+                list.add(s);
+            }
+            else{
+
+                String value = table[Character.getNumericValue(digits.charAt(s.length()))];
+                for(int i = 0;i<value.length();++i){
+
+                    queue.add(s+value.charAt(i));
+                }
+            }
+        }}
+        return list;
+    }
+}

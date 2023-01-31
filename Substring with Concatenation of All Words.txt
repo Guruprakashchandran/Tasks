@@ -1,0 +1,44 @@
+int matchingCount = 0;
+		System.out.println(subWord);
+		for(int k = 0;k<subWord.length();k+=length){
+			for(int j = 0;j<str.length;j++){
+
+				if(subWord.substring(k,k+length).equals(str[j])){
+						
+					str[j] = "0000";
+					matchingCount++;
+					break;
+				}
+			}
+			if((k/length)+1 != matchingCount){
+				break;
+			}
+		}
+		if(matchingCount == str.length){
+
+			return 1;
+		}
+		return 0;
+	}
+    public List<Integer> findSubstring(String word, String[] str) {
+      String[] s;
+		List<Integer> list = new ArrayList<>();
+		Solution concat = new Solution();
+		try {
+			for(int i = 0;i<(word.length()-(str[0].length()*str.length)+1);i++){
+	
+				s  = str.clone();
+
+				int value = concat.function(word.substring(i,str.length*str[0].length()+i),s,str[0].length());
+				if(value == 1){
+					//System.out.println(i);
+					list.add(i);
+				}
+				
+			}
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+        }
+        return list; 
